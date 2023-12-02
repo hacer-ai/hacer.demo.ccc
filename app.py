@@ -3,9 +3,10 @@ import streamlit as st
 import openai
 import uuid
 import time
-import pandas as pd
 import io
 from openai import OpenAI
+import langchain
+#from langchain.llms import OpenAI
 
 #Global Page Configuration
 st.set_page_config(
