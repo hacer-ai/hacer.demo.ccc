@@ -1,0 +1,17 @@
+.streamlit/secrets.toml
+.venv
+
+node_modules
+venv/
+env
+dist
+.env
+temp
+src/schema.gql
+.vscode
+.idea
+.DS_Store
+
+**/__pycache__/
+.pyc
+app/__pycache__/
