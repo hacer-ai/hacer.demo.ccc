@@ -35,10 +35,10 @@ if "retry_error" not in st.session_state:
 
 # Set up the page
 #st.set_page_config(page_title="hacer.ai - Automatización")
-st.sidebar.title("Title")
+st.sidebar.title("hacer.ai")
 st.sidebar.divider()
-st.sidebar.markdown("Your name", unsafe_allow_html=True)
-st.sidebar.markdown("Assistant GPT")
+st.sidebar.markdown("Herramienta de automatización de Documentos", unsafe_allow_html=True)
+st.sidebar.markdown("hacer Agent Toolkit 1.0")
 st.sidebar.divider()
 
 
@@ -96,7 +96,7 @@ elif hasattr(st.session_state.run, 'status') and st.session_state.run.status == 
                     st.markdown(message_text)
 
 # Chat input and message creation with file ID
-if prompt := st.chat_input("How can I help you?"):
+if prompt := st.chat_input("Cómo puedo ayudarte con este documento?"):
     with st.chat_message('user'):
         st.write(prompt)
 
@@ -124,7 +124,7 @@ if prompt := st.chat_input("How can I help you?"):
 if hasattr(st.session_state.run, 'status'):
     if st.session_state.run.status == "running":
         with st.chat_message('assistant'):
-            st.write("Thinking ......")
+            st.write("Buscando Información ......")
         if st.session_state.retry_error < 3:
             time.sleep(1)
             st.rerun()
