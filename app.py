@@ -5,6 +5,7 @@ import uuid
 import time
 import io
 from openai import OpenAI
+import requests, os
 #from langchain.llms import OpenAI
 
 #Global Page Configuration
@@ -41,6 +42,36 @@ st.sidebar.markdown("Herramienta de automatización de Documentos", unsafe_allow
 st.sidebar.markdown("hacer Agent Toolkit 1.0")
 st.sidebar.divider()
 
+
+tools_list = [
+    {
+        "type": "function",
+        "function": {
+            "name": "get_latest_company_news",
+            "description": "Fetches the latest news articles related to a specified company",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "company_name": {
+                        "type": "string",
+                        "description": "The name of the company"
+                    }
+                },
+                "required": ["company_name"]
+            }
+        }
+    }
+]
+
+GNEWS_API_KEY = st.secrets["GNEWS_API_KEY"]
+
+def get_latest_company_news(company_name):
+    url = f"https://gnews.io/api/v4/search?q={company_name}&token={GNEWS_API_KEY}&lang=en&sortBy=publishedAt"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()['articles']
+    else:
+        return []
 
 
 st.write("""<img width="180" src="https://hacer.ai/dist/assets/Logo_black.svg"/>   &nbsp; + &nbsp;   <img width="140" src="https://www.ccc.org.co/inc/themes/ccc-template/header/assets/img/icons/home/Logo-ccc.svg"/>""", unsafe_allow_html=True)
