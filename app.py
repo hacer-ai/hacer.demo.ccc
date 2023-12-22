@@ -74,10 +74,11 @@ def get_latest_company_news(company_name):
         return []
 
 
-st.write("""<img width="180" src="https://hacer.ai/dist/assets/Logo_black.svg"/>   &nbsp; + &nbsp;   <img width="140" src="https://www.ccc.org.co/inc/themes/ccc-template/header/assets/img/icons/home/Logo-ccc.svg"/>""", unsafe_allow_html=True)
+#st.write("""<img width="180" src="https://hacer.ai/dist/assets/Logo_black.svg"/>   &nbsp; + &nbsp;   <img width="140" src="https://www.ccc.org.co/inc/themes/ccc-template/header/assets/img/icons/home/Logo-ccc.svg"/>""", unsafe_allow_html=True)
+st.write("""<img width="180" src="https://hacer.ai/dist/assets/Logo_black.svg"/>   """, unsafe_allow_html=True)
 
 # File uploader for CSV, XLS, XLSX
-uploaded_file = st.file_uploader("Carga tu Certificado de Camara de Comercio", type=["pdf"])
+uploaded_file = st.file_uploader("Reforma a la Salud Precargada, Puedes adicionar Documentos", type=["pdf"])
 
 if uploaded_file is not None:
     # Determine the file type
