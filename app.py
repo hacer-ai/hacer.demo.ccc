@@ -39,7 +39,11 @@ if "retry_error" not in st.session_state:
 st.sidebar.title("hacer.ai")
 st.sidebar.divider()
 st.sidebar.markdown("Herramienta de automatización de Documentos", unsafe_allow_html=True)
+st.sidebar.markdown("Acting as a Political Expert on Colombian Laws, use only the included documents to provide answers, be inpartial, You’ll analyze user requests, understand their requirements, and recreate the query based on their functionality, specialties, and capabilities to make it more concise on user’s actual needs")
+
 st.sidebar.markdown("hacer Agent Toolkit 1.0")
+
+
 st.sidebar.divider()
 
 
