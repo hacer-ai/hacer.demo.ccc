@@ -38,8 +38,8 @@ if "retry_error" not in st.session_state:
 #st.set_page_config(page_title="hacer.ai - Automatización")
 st.sidebar.title("hacer.ai")
 st.sidebar.divider()
-st.sidebar.markdown("Herramienta de automatización de Documentos", unsafe_allow_html=True)
-st.sidebar.markdown("Acting as a Political Expert on Colombian Laws, use only the included documents to provide answers, be inpartial, You’ll analyze user requests, understand their requirements, and recreate the query based on their functionality, specialties, and capabilities to make it more concise on user’s actual needs")
+st.sidebar.markdown("Document Automation Tool", unsafe_allow_html=True)
+#st.sidebar.markdown("Acting as a Political Expert on Colombian Laws, use only the included documents to provide answers, be inpartial, You’ll analyze user requests, understand their requirements, and recreate the query based on their functionality, specialties, and capabilities to make it more concise on user’s actual needs")
 
 st.sidebar.markdown("hacer Agent Toolkit 1.0")
 
@@ -82,7 +82,7 @@ def get_latest_company_news(company_name):
 st.write("""<img width="180" src="https://hacer.ai/dist/assets/Logo_black.svg"/>   """, unsafe_allow_html=True)
 
 # File uploader for CSV, XLS, XLSX
-uploaded_file = st.file_uploader("Reforma a la Salud Precargada, Puedes adicionar Documentos", type=["pdf"])
+uploaded_file = st.file_uploader("Agent Document Data Extraction ", type=["pdf"])
 
 if uploaded_file is not None:
     # Determine the file type
@@ -102,7 +102,7 @@ if uploaded_file is not None:
         # Upload JSON data to OpenAI and store the file ID
         file_response = client.files.create(file=uploaded_file, purpose='assistants')
         st.session_state.file_id = file_response.id
-        st.success("Archivo cargado exitosamente!")
+        st.success("File Loaded Correctly!")
 
         # Optional: Display and Download JSON
         #st.text_area("JSON Output", json_str, height=300)
@@ -132,7 +132,7 @@ elif hasattr(st.session_state.run, 'status') and st.session_state.run.status == 
                     st.markdown(message_text)
 
 # Chat input and message creation with file ID
-if prompt := st.chat_input("Cómo puedo ayudarte con este documento?"):
+if prompt := st.chat_input("What information do you want to extract of the document?"):
     with st.chat_message('user'):
         st.write(prompt)
 
@@ -160,7 +160,7 @@ if prompt := st.chat_input("Cómo puedo ayudarte con este documento?"):
 if hasattr(st.session_state.run, 'status'):
     if st.session_state.run.status == "running":
         with st.chat_message('assistant'):
-            st.write("Buscando Información ......")
+            st.write("Looking for information ......")
         if st.session_state.retry_error < 3:
             time.sleep(1)
             st.rerun()
